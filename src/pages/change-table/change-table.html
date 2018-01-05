@@ -1,0 +1,47 @@
+<!--
+  Generated template for the ChangeTablePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>change-table-page</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>
+        <div>
+          <h1>  {{currentTable.name}} </h1>
+          <ion-card *ngFor="let tables of tableWithOrder">
+            <ion-card-header>
+              {{tables.name}}
+            </ion-card-header>
+            <ion-card-content>
+              Cумма: {{tables.sum}} Количество:{{tables.count}}
+              <ion-icon name="arrow-round-forward" (click)="shiftOrder(tables)"></ion-icon>
+            </ion-card-content>
+          </ion-card>
+        </div>
+
+      </ion-col>
+      <ion-col col-6>
+        <h1>{{table.name}}</h1>
+        <ion-card *ngFor="let order of changedTable">
+          <ion-card-header>
+              {{order.name}}
+          </ion-card-header>
+          <ion-card-content>
+            Сумма: {{order.sum}} Количество:{{order.count}}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

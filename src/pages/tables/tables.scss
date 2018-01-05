@@ -1,0 +1,32 @@
+page-tables {
+  .content-md {
+    background-image: url("https://www.wien.info/media/images/41993-das-loft-sofitel-19to1.jpeg");
+    background-size: cover;
+  }
+
+  .backgroundShow {
+    background: orange;
+    padding: 12px;
+  }
+
+  .freeStatus:hover {
+    transition: top 1s ease-out 0.5s;
+  }
+
+
+  backgroundShow{
+    background: gray;
+  }
+  .ion-md-information-circle:before {
+    content: "\f311";
+    padding: 10px;
+  }
+  .ion-md-exit:before {
+    content: "\f2e6";
+    padding: 10px;
+  }
+  ion-icon {
+     display: inline-block;
+     font-size: 1.7em;
+   }
+}

@@ -1,0 +1,113 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{table.name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-3>
+        <ion-card>
+          <ion-card-content (click)="(showKitchen = !showKitchen); showBar = false; showHookah = false" (click)="hideMenu()"  [ngClass]="(showKitchen === true)?'backgroundShow':''">
+            Кухня
+          </ion-card-content>
+        </ion-card>
+        <ion-card>
+          <ion-card-content  (click)="showBar = !showBar; showKitchen = false; showHookah = false" (click)="hideMenu()" [ngClass]="(showBar === true)?'backgroundShow':''">
+            Бар
+          </ion-card-content>
+        </ion-card>
+        <ion-card>
+          <ion-card-content (click)="showHookah = !showHookah ; showBar = false; showKitchen = false" (click)="hideMenu()" [ngClass]="(showHookah === true)?'backgroundShow':''">
+            Кальяны
+          </ion-card-content>
+        </ion-card>
+        <ion-card>
+          <ion-card-content>
+            Порча имущества
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+        <ion-col col-3 >
+          <div *ngIf="showKitchen">
+            <h1>Кухня </h1>
+            <ion-card *ngFor="let kitchenKey of kitchenKeys">
+              <ion-card-content (click)="addKitchen(kitchenKey)">
+                {{kitchenKey}}
+              </ion-card-content>
+            </ion-card>
+          </div>
+
+          <div *ngIf="showBar">
+            <h1>Бар</h1>
+            <ion-card *ngFor="let alcoholKey of alcoholKeys">
+              <ion-card-content (click)="addAlcohol(alcoholKey)">
+                {{alcoholKey}}
+              </ion-card-content>
+            </ion-card>
+          </div>
+
+          <div *ngIf="showHookah">
+            <h1>Кальяны </h1>
+            <ion-card *ngFor="let hookahKey of hookahKeys">
+              <ion-card-content (click)="addHookah(hookahKey)">
+                {{hookahKey}}
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </ion-col>
+
+        <ion-col col-3>
+          <div>
+            <ion-card *ngFor="let show of showArray" (click)="addToTotalScore(show)">
+              <ion-card-header>
+                {{show.name}}
+              </ion-card-header>
+              <ion-card-content>
+                цена: {{show.price}}грн
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </ion-col>
+        <ion-col col-3>
+          <div>
+            <button ion-button color="light" (click)="sendToTotalModal()">Пречек</button>
+            <button ion-button color="light">Выбить чек</button>
+            <button ion-button (click)="changeTable()">Перенести</button>
+            <button ion-button (click)="sendNotes()">Функции чека</button>
+
+            <ion-card *ngFor="let total of totalScoreService">
+              <ion-card-header >
+                {{total.name}}
+                <input [(ngModel)]="total.note" (keyup)="writingNote(total)" type="text">
+                <ion-icon name="md-close-circle" (click)="deleteItem(total)"></ion-icon>
+              </ion-card-header>
+              <ion-card-content>
+                Количество:
+                <input [(ngModel)]="total.count" (keyup)="writingCount(total)" type="number" [disabled]="total['status']===false">
+                цена: {{total.price}}грн
+                сумма: {{total.sum}} грн
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-10>
+      </ion-col>
+      <ion-col col-2>
+        <h1> Cумма: {{getResultPrice()}} </h1>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

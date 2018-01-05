@@ -1,0 +1,28 @@
+<ion-content padding>
+  <div class="login-page">
+    <div class="form">
+      <img src ="https://www.easykeeper.com/wp-content/uploads/2014/08/Easy_Keeper-White.png">
+      <!--<button ion-button [disabled]="!(status=='admin')">admin can click</button>-->
+      <!--<button ion-button [disabled]="status=='admin'">Admin can't click</button>-->
+      <ion-grid>
+        <ion-row>
+          <ion-col class="form-input-first">
+            <ion-input type="text" placeholder="username" [(ngModel)]="login"  [ngModelOptions]="{standalone: true}" (keyup)="checkFieldValue('login')"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="form-input">
+            <ion-input type="password" placeholder="password" [(ngModel)]="password"  [ngModelOptions]="{standalone: true}" (keyup)="checkFieldValue('password')"></ion-input>
+          </ion-col>
+        </ion-row>
+        <div class="form-checkbox">
+          <ion-checkbox color="dark" checked="true" ></ion-checkbox>
+          Remember me
+        </div>
+      </ion-grid>
+        <button ion-button (click)="add()" full class="form-button" >login</button>
+    </div>
+  </div>
+</ion-content>
+
+<!--[disabled]="this.login.trim() === '' || this.password == null"-->

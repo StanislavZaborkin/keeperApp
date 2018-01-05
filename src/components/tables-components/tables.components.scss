@@ -1,0 +1,24 @@
+tables-component {
+
+  .tables-tables {
+    background-image: url("https://d30y9cdsu7xlg0.cloudfront.net/png/132432-200.png");
+    width: 143px;
+    height: 140px;
+    background-size: cover;
+    display: inline-block;
+    margin-right: 50px;
+  }
+  .tables-tables:hover {
+    -webkit-transform: scale(1.2,1.2);
+    -webkit-transition-timing-function: cubic-bezier(0.16, 0.44, 1, 2.07);
+    -webkit-transition-duration: 400ms;
+  }
+
+  .shadowtext {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    margin: 22px;
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,36 @@
+
+<ion-content>
+  <div padding>
+    <ion-segment [(ngModel)]="pet">
+      <ion-segment-button value="waiter">
+        Зал
+      </ion-segment-button>
+      <ion-segment-button value="admin">
+        Администрация
+      </ion-segment-button>
+      <ion-segment-button value="hookah">
+        Кальян
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="pet">
+    <ion-list *ngSwitchCase="'waiter'">
+      <ion-item *ngFor = 'let table of tables[0]' (click)="changeTable(table)">
+        {{table.name}}
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'admin'">
+      <ion-item *ngFor = 'let table of tables[2]' (click)="changeTable(table)">
+        {{table.name}}
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'hookah'">
+      <ion-item *ngFor = 'let table of tables[1]' (click)="changeTable(table)">
+        {{table.name}}
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
